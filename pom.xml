@@ -23,7 +23,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.ericsson.gameoflife.GameOfLife</mainClass>
+                            <mainClass>com.ericsson.com.gameoflife.GameOfLife</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

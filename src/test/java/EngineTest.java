@@ -1,5 +1,4 @@
-import com.ericsson.gameoflife.Engine;
-import org.testng.annotations.BeforeMethod;
+import com.gameoflife.Engine;
 import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertEquals;
@@ -51,7 +50,7 @@ public class EngineTest {
         System.out.println(testEngine.toString());
         testEngine.step();
         System.out.println(testEngine.toString());
-        assertEquals(0,testEngine.getPiece(1, 1));
+        assertEquals(0, testEngine.getPiece(1, 1));
 
     }
 

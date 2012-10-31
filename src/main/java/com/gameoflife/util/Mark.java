@@ -1,4 +1,4 @@
-package com.ericsson.gameoflife.util;
+package com.gameoflife.util;
 
 /**
  * Created with IntelliJ IDEA.

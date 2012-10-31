@@ -1,6 +1,6 @@
-package com.ericsson.gameoflife;
+package com.gameoflife;
 
-import com.ericsson.gameoflife.util.Mark;
+import com.gameoflife.util.Mark;
 
 import java.util.ArrayList;
 
