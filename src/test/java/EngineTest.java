@@ -45,10 +45,12 @@ public class EngineTest {
 
     @Test
     public void testOverCrowdingRule() {
-        testEngine = new Engine(new int[][] { {1,0,0},
-                                              {1,1,0},
-                                              {1,1,0}});
+        testEngine = new Engine(new int[][] { {0,0,1},
+                                              {1,1,1},
+                                              {1,0,0}});
+        System.out.println(testEngine.toString());
         testEngine.step();
+        System.out.println(testEngine.toString());
         assertEquals(0,testEngine.getPiece(1, 1));
 
     }
