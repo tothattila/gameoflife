@@ -13,6 +13,12 @@
             <artifactId>testng</artifactId>
             <version>6.5.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.5</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <build>
 
@@ -23,7 +29,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.ericsson.com.gameoflife.GameOfLife</mainClass>
+                            <mainClass>com.ericsson.com.gameoflife.GameOfLifeRunner</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
