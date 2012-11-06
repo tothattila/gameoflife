@@ -26,10 +26,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
+                <version>2.2</version>
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.ericsson.com.gameoflife.GameOfLifeRunner</mainClass>
+                            <mainClass>com.gameoflife.GameOfLifeRunner</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

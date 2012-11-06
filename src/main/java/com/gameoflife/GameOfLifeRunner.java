@@ -11,14 +11,6 @@ import com.gameoflife.util.BoardFactory;
  */
 public class GameOfLifeRunner {
 
-    private static void usage() {
-        System.out.println("Usage: command <stepcount> <board>");
-        System.out.println("  For example command 15 1,1,0;1,1,0;0,0,0 will do 15 steps on still board");
-        System.out.println("        1 1 0");
-        System.out.println("        1 1 0");
-        System.out.println("        0 0 0");
-    }
-
     public static void main(final String params[]) {
         int stepCount;
         String board;
@@ -34,8 +26,14 @@ public class GameOfLifeRunner {
         } catch (ArrayIndexOutOfBoundsException exc) {
            usage();
         }
+    }
 
-
+    private static void usage() {
+        System.out.println("Usage: command <stepcount> <board>");
+        System.out.println("  For example command 15 1,1,0;1,1,0;0,0,0 will do 15 steps on still board");
+        System.out.println("        1 1 0");
+        System.out.println("        1 1 0");
+        System.out.println("        0 0 0");
     }
 
 }
