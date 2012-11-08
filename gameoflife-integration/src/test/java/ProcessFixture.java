@@ -1,5 +1,3 @@
-package com.gameoflife.util;
-
 import java.io.*;
 
 /**
