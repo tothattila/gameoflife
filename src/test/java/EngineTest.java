@@ -1,6 +1,8 @@
 import com.gameoflife.Engine;
 import org.testng.annotations.Test;
 
+import java.io.Serializable;
+
 import static org.testng.AssertJUnit.assertEquals;
 
 /**
@@ -29,7 +31,7 @@ public class EngineTest {
                                               {0,1,0},
                                               {0,0,0}});
         testEngine.step();
-        assertEquals(0,testEngine.getPiece(1,1));
+        assertEquals(0,testEngine.getPiece(1, 1));
 
     }
 
@@ -60,7 +62,7 @@ public class EngineTest {
                                               {1,0,0},
                                               {1,0,0}});
         testEngine.step();
-        assertEquals(1,testEngine.getPiece(1,1));
+        assertEquals(1, testEngine.getPiece(1, 1));
     }
 
     @Test
@@ -69,7 +71,7 @@ public class EngineTest {
                                               {1,1,0},
                                               {1,1,1}});
         testEngine.step();
-        assertEquals(0,testEngine.getPiece(1,1));
+        assertEquals(0, testEngine.getPiece(1, 1));
         assertEquals(1,testEngine.getPiece(2,2));
     }
 
@@ -87,9 +89,18 @@ public class EngineTest {
         testEngine = new Engine(new int[][] { {1,1,1,1,1},
                                               {1,1,1,1,1},
                                               {1,1,1,1,1}});
-        assertEquals(0,testEngine.getPiece(-1,0));
+        assertEquals(0, testEngine.getPiece(-1, 0));
         assertEquals(0,testEngine.getPiece(5,6));
 
+    }
+
+    @Test
+    public void doNotCreateElementWhenNeighborCountIsMoreThanThree() {
+       testEngine = new Engine(new int[][] { {1,1,0,1,1},
+                                             {1,1,0,1,1},
+                                             {0,0,0,0,0}});
+
+       assertEquals(0,testEngine.getPiece(3,2));
     }
 
 }
