@@ -27,8 +27,7 @@ public class BoardFactoryTest {
        assertArrayEquals(new int[]{1, 0, 0}, result[4]);
     }
 
-    @Ignore
-    @Test
+    @Test(enabled=false)
     public void processIrregularBoard() {
         int[][]result = new BoardFactory().parse("1,0,0;0,1,0;1;0;1,0,0,0,1");
         assertEquals(5,result.length);
