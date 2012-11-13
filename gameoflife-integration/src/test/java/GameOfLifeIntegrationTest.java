@@ -17,11 +17,6 @@ import static org.junit.Assert.fail;
  */
 public class GameOfLifeIntegrationTest extends ProcessFixture {
 
-    @BeforeClass(alwaysRun=true)
-    public void setUp() {
-       assertTrue(checkInstallDirVariable());
-    }
-
     /**
      *  OO.
      *  OO.

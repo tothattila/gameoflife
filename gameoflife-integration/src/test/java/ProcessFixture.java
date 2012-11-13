@@ -33,22 +33,4 @@ public class ProcessFixture {
         return result;
     }
 
-    protected boolean checkInstallDirVariable() {
-
-        String installDir = System.getenv("GAMEOFLIFE_INSTALL_DIR");
-        if (installDir!=null) {
-            System.out.println("ERROR: no GAMEOFLIFE_INSTALL_DIR specified");
-            return false;
-        }
-
-        File installedGameOfLife = new File(installDir + File.separator + "gameoflife.jar");
-        if (!installedGameOfLife.exists()) {
-            System.out.println("ERROR: could not find installed game of life (value of GAMEOFLIFE_INSTALL_DIR) in dir" +
-                    " " + installDir);
-            return false;
-        }
-        return true;
-
-    }
-
 }
