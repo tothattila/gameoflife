@@ -1,5 +1,7 @@
 import java.io.*;
 
+import static org.junit.Assert.fail;
+
 /**
  * Created with IntelliJ IDEA.
  * User: eatttth
@@ -29,6 +31,24 @@ public class ProcessFixture {
             result += nextLine + lineSep;
         }
         return result;
+    }
+
+    protected boolean checkInstallDirVariable() {
+
+        String installDir = System.getenv("GAMEOFLIFE_INSTALL_DIR");
+        if (installDir!=null) {
+            System.out.println("ERROR: no GAMEOFLIFE_INSTALL_DIR specified");
+            return false;
+        }
+
+        File installedGameOfLife = new File(installDir + File.separator + "gameoflife.jar");
+        if (!installedGameOfLife.exists()) {
+            System.out.println("ERROR: could not find installed game of life (value of GAMEOFLIFE_INSTALL_DIR) in dir" +
+                    " " + installDir);
+            return false;
+        }
+        return true;
+
     }
 
 }

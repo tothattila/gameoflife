@@ -1,7 +1,12 @@
 
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.io.File;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,6 +16,11 @@ import static org.junit.Assert.assertEquals;
  * To change this template use File | Settings | File Templates.
  */
 public class GameOfLifeIntegrationTest extends ProcessFixture {
+
+    @BeforeClass(alwaysRun=true)
+    public void setUp() {
+       assertTrue(checkInstallDirVariable());
+    }
 
     /**
      *  OO.
@@ -57,22 +67,22 @@ public class GameOfLifeIntegrationTest extends ProcessFixture {
      */
     @Test(groups="integration")
     public void oscillatingBoard1() throws Exception  {
-       final String board = "0,1,0;"+ //
-                            "0,1,0;"+ //
-                            "0,1,0";
-       final String expected1 = "   " + lineSep + //
+       final String initialBoard = "0,1,0;"+ //
+                                   "0,1,0;"+ //
+                                   "0,1,0";
+       final String step1 = "   " + lineSep + //
                                 "OOO" + lineSep + //
                                 "   " + lineSep;
-       final String expected2 = " O " + lineSep + //
+       final String step2 = " O " + lineSep + //
                                 " O " + lineSep + //
                                 " O " + lineSep;
 
-       assertEquals(expected1, executeGameOfLifeAndCollectResults(1, board));
-       assertEquals(expected2, executeGameOfLifeAndCollectResults(2, board));
-       assertEquals(expected1, executeGameOfLifeAndCollectResults(3, board));
-       assertEquals(expected2, executeGameOfLifeAndCollectResults(4, board));
-       assertEquals(expected1, executeGameOfLifeAndCollectResults(5, board));
-       assertEquals(expected2, executeGameOfLifeAndCollectResults(6, board));
+       assertEquals(step1, executeGameOfLifeAndCollectResults(1, initialBoard));
+       assertEquals(step2, executeGameOfLifeAndCollectResults(2, initialBoard));
+       assertEquals(step1, executeGameOfLifeAndCollectResults(3, initialBoard));
+       assertEquals(step2, executeGameOfLifeAndCollectResults(4, initialBoard));
+       assertEquals(step1, executeGameOfLifeAndCollectResults(5, initialBoard));
+       assertEquals(step2, executeGameOfLifeAndCollectResults(6, initialBoard));
     }
 
     /**
@@ -83,31 +93,33 @@ public class GameOfLifeIntegrationTest extends ProcessFixture {
      */
     @Test(groups="integration")
     public void oscillatingBoard2() throws Exception  {
-       final String board = "0,0,0,0;"+ //
-                            "0,1,1,1;"+ //
-                            "1,1,1,0;"+ //
-                            "0,0,0,0";
-       final String expected1 = "  O "+lineSep + //
-                                "O  O"+lineSep + //
-                                "O  O"+lineSep + //
-                                " O  "+lineSep;
-       final String expected2 = "    "+lineSep + //
-                                " OOO"+lineSep + //
-                                "OOO "+lineSep + //
-                                "    "+lineSep;
+       final String initialBoard = "0,0,0,0;"+ //
+                                   "0,1,1,1;"+ //
+                                   "1,1,1,0;"+ //
+                                   "0,0,0,0";
+       final String expectedStep1 = "  O "+lineSep + //
+                                    "O  O"+lineSep + //
+                                    "O  O"+lineSep + //
+                                    " O  "+lineSep;
+       final String expectedStep2 = "    "+lineSep + //
+                                    " OOO"+lineSep + //
+                                    "OOO "+lineSep + //
+                                    "    "+lineSep;
 
-       assertEquals(expected1, executeGameOfLifeAndCollectResults(1, board));
-       assertEquals(expected2, executeGameOfLifeAndCollectResults(2, board));
-       assertEquals(expected1, executeGameOfLifeAndCollectResults(3, board));
-       assertEquals(expected2, executeGameOfLifeAndCollectResults(4, board));
-       assertEquals(expected1, executeGameOfLifeAndCollectResults(5, board));
-       assertEquals(expected2, executeGameOfLifeAndCollectResults(6, board));
+       assertEquals(expectedStep1, executeGameOfLifeAndCollectResults(1, initialBoard));
+       assertEquals(expectedStep2, executeGameOfLifeAndCollectResults(2, initialBoard));
+       assertEquals(expectedStep1, executeGameOfLifeAndCollectResults(3, initialBoard));
+       assertEquals(expectedStep2, executeGameOfLifeAndCollectResults(4, initialBoard));
+       assertEquals(expectedStep1, executeGameOfLifeAndCollectResults(5, initialBoard));
+       assertEquals(expectedStep2, executeGameOfLifeAndCollectResults(6, initialBoard));
     }
 
     /**
      * R-pentomino
      *
      * http://conwaylife.com/wiki/index.php?title=R-pentomino
+     *
+     *
      */
 
     @Test(groups="integration")
