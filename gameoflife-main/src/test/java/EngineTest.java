@@ -37,9 +37,9 @@ public class EngineTest {
 
     @Test
     public void testStayAliveRule() {
-       testEngine = new Engine(new int[][] { {1,1,0},
+       testEngine = new Engine(new int[][] { {1,0,0},
                                              {0,1,0},
-                                             {0,0,0}});
+                                             {0,0,1}});
         testEngine.step();
         assertEquals(1,testEngine.getPiece(1,1));
     }
