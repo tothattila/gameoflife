@@ -17,7 +17,7 @@ public class GameOfLifeRunner {
         try {
            stepCount = Integer.valueOf(params[0]);
            board = params[1];
-           BoardFactory factory = new BoardFactory();
+           BoardFactory factory = new BoardFactory()
            GameOfLife gameOfLife = new GameOfLife(new Engine(factory.parse(board)),'O');
            gameOfLife.step(stepCount);
            gameOfLife.printBoard();
