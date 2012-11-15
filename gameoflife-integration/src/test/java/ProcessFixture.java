@@ -16,7 +16,8 @@ public class ProcessFixture {
     protected String executeGameOfLifeAndCollectResults(final int stepCount, final String initialBoard) throws Exception {
         Runtime runtime = Runtime.getRuntime();
         String installDir = System.getenv("GAMEOFLIFE_INSTALL_DIR");
-        String command = "java -jar " + installDir + File.separator + "gameoflife.jar " + stepCount + " " +
+        String command = "java -jar " + installDir + File.separator + "gameoflife.jar -step " + stepCount + " -board " +
+                "" +
                 initialBoard;
         Process testProcess = runtime.exec(command);
         testProcess.waitFor();
