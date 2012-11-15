@@ -77,11 +77,27 @@ public class EngineTest {
 
     @Test
     public void getSingleElement() {
-        testEngine = new Engine(new int[][] { {0,0,0},
-                                              {0,0,1},
+        testEngine = new Engine(new int[][] { {0,1,1},
+                                              {0,1,1},
                                               {0,0,0}});
         testEngine.step();
+        assertEquals(1,testEngine.getPiece(2,0));
         assertEquals(1,testEngine.getPiece(2,1));
+        assertEquals(1,testEngine.getPiece(1,0));
+        assertEquals(1,testEngine.getPiece(1,1));
+    }
+
+    @Test
+    public void shouldKillOneStandingAlone() {
+        testEngine = new Engine(new int[][] { {0,0,0},
+                {0,1,0},
+                {0,0,0}});
+        testEngine.step();
+        for (int i=0; i< 2;i++){
+            for (int j=0; j< 2;j++){
+                assertEquals(0,testEngine.getPiece(i,j));
+            }
+        }
     }
 
     @Test
@@ -102,5 +118,7 @@ public class EngineTest {
 
        assertEquals(0,testEngine.getPiece(3,2));
     }
+
+
 
 }

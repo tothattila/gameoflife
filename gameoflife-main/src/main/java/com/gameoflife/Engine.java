@@ -72,7 +72,8 @@ public class Engine {
                           markList.add(new Mark(column, row, LIVE));
                       }
                 break;
-            case LIVE: if ((neighborCount ==1) || (neighborCount > 3)) {
+            case LIVE: if ((neighborCount < 2) || (neighborCount > 3)) {
+            //    case LIVE: if ((neighborCount == 1) || (neighborCount > 3)) {
                           markList.add(new Mark(column, row, DEAD));
                       }
                 break;

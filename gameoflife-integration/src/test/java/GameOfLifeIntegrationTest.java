@@ -17,6 +17,24 @@ import static org.junit.Assert.fail;
  */
 public class GameOfLifeIntegrationTest extends ProcessFixture {
 
+
+    /**
+     *  OO.
+     *  OO.
+     *  ...
+     */
+    @Test(groups="integration")
+    public void stillBoard0() throws Exception {
+        final String board =    "0,0,0;" + //
+                                "0,1,0;" + //
+                                "0,0,0";
+        final String expected = "   " + lineSep + //
+                "   " + lineSep + //
+                "   " + lineSep;
+
+        assertEquals(expected, executeGameOfLifeAndCollectResults(1, board));
+    }
+
     /**
      *  OO.
      *  OO.
