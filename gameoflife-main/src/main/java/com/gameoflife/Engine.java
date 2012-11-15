@@ -68,7 +68,7 @@ public class Engine {
 
     private void setNewState(int column, int row, int neighborCount) {
         switch (getPiece(column, row)) {
-            case DEAD: if (neighborCount != 3) {
+            case DEAD: if (neighborCount == 3) {
                           markList.add(new Mark(column, row, LIVE));
                       }
                 break;
