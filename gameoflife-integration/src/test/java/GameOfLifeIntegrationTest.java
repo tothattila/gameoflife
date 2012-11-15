@@ -1,8 +1,5 @@
 
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
-import java.io.File;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -18,11 +15,6 @@ import static org.junit.Assert.fail;
 public class GameOfLifeIntegrationTest extends ProcessFixture {
 
 
-    /**
-     *  OO.
-     *  OO.
-     *  ...
-     */
     @Test(groups="integration")
     public void stillBoard0() throws Exception {
         final String board =    "0,0,0;" + //
@@ -32,7 +24,7 @@ public class GameOfLifeIntegrationTest extends ProcessFixture {
                 "   " + lineSep + //
                 "   " + lineSep;
 
-        assertEquals(expected, executeGameOfLifeAndCollectResults(1, board));
+        assertEquals(expected, executeGameOfLifeAndCollectResults(1, board, "O"));
     }
 
     /**
@@ -49,9 +41,9 @@ public class GameOfLifeIntegrationTest extends ProcessFixture {
                                 "OO " + lineSep + //
                                 "   " + lineSep;
 
-        assertEquals(expected, executeGameOfLifeAndCollectResults(1, board));
-        assertEquals(expected, executeGameOfLifeAndCollectResults(2, board));
-        assertEquals(expected, executeGameOfLifeAndCollectResults(3, board));
+        assertEquals(expected, executeGameOfLifeAndCollectResults(1, board, "O"));
+        assertEquals(expected, executeGameOfLifeAndCollectResults(2, board, "O"));
+        assertEquals(expected, executeGameOfLifeAndCollectResults(3, board, "O"));
     }
 
     /**
@@ -68,9 +60,24 @@ public class GameOfLifeIntegrationTest extends ProcessFixture {
                                "O  O" + lineSep + //
                                " OO " + lineSep;
 
-       assertEquals(expected, executeGameOfLifeAndCollectResults(1, board));
-       assertEquals(expected, executeGameOfLifeAndCollectResults(2, board));
-       assertEquals(expected, executeGameOfLifeAndCollectResults(3, board));
+       assertEquals(expected, executeGameOfLifeAndCollectResults(1, board, "O"));
+       assertEquals(expected, executeGameOfLifeAndCollectResults(2, board, "O"));
+       assertEquals(expected, executeGameOfLifeAndCollectResults(3, board, "O"));
+    }
+
+
+    @Test(groups="integration")
+    public void stillBoard3() throws Exception {
+        final String board = "1,1,0;" + //
+                "1,1,0;" + //
+                "0,0,0";
+        final String expected = "FF " + lineSep + //
+                "FF " + lineSep + //
+                "   " + lineSep;
+
+        assertEquals(expected, executeGameOfLifeAndCollectResults(1, board, "F"));
+        assertEquals(expected, executeGameOfLifeAndCollectResults(2, board, "F"));
+        assertEquals(expected, executeGameOfLifeAndCollectResults(3, board, "F"));
     }
 
     /**
@@ -90,12 +97,12 @@ public class GameOfLifeIntegrationTest extends ProcessFixture {
                                 " O " + lineSep + //
                                 " O " + lineSep;
 
-       assertEquals(step1, executeGameOfLifeAndCollectResults(1, initialBoard));
-       assertEquals(step2, executeGameOfLifeAndCollectResults(2, initialBoard));
-       assertEquals(step1, executeGameOfLifeAndCollectResults(3, initialBoard));
-       assertEquals(step2, executeGameOfLifeAndCollectResults(4, initialBoard));
-       assertEquals(step1, executeGameOfLifeAndCollectResults(5, initialBoard));
-       assertEquals(step2, executeGameOfLifeAndCollectResults(6, initialBoard));
+       assertEquals(step1, executeGameOfLifeAndCollectResults(1, initialBoard, "O"));
+       assertEquals(step2, executeGameOfLifeAndCollectResults(2, initialBoard, "O"));
+       assertEquals(step1, executeGameOfLifeAndCollectResults(3, initialBoard, "O"));
+       assertEquals(step2, executeGameOfLifeAndCollectResults(4, initialBoard, "O"));
+       assertEquals(step1, executeGameOfLifeAndCollectResults(5, initialBoard, "O"));
+       assertEquals(step2, executeGameOfLifeAndCollectResults(6, initialBoard, "O"));
     }
 
     /**
@@ -119,12 +126,12 @@ public class GameOfLifeIntegrationTest extends ProcessFixture {
                                     "OOO "+lineSep + //
                                     "    "+lineSep;
 
-       assertEquals(expectedStep1, executeGameOfLifeAndCollectResults(1, initialBoard));
-       assertEquals(expectedStep2, executeGameOfLifeAndCollectResults(2, initialBoard));
-       assertEquals(expectedStep1, executeGameOfLifeAndCollectResults(3, initialBoard));
-       assertEquals(expectedStep2, executeGameOfLifeAndCollectResults(4, initialBoard));
-       assertEquals(expectedStep1, executeGameOfLifeAndCollectResults(5, initialBoard));
-       assertEquals(expectedStep2, executeGameOfLifeAndCollectResults(6, initialBoard));
+       assertEquals(expectedStep1, executeGameOfLifeAndCollectResults(1, initialBoard, "O"));
+       assertEquals(expectedStep2, executeGameOfLifeAndCollectResults(2, initialBoard, "O"));
+       assertEquals(expectedStep1, executeGameOfLifeAndCollectResults(3, initialBoard, "O"));
+       assertEquals(expectedStep2, executeGameOfLifeAndCollectResults(4, initialBoard, "O"));
+       assertEquals(expectedStep1, executeGameOfLifeAndCollectResults(5, initialBoard, "O"));
+       assertEquals(expectedStep2, executeGameOfLifeAndCollectResults(6, initialBoard, "O"));
     }
 
     /**
@@ -168,11 +175,11 @@ public class GameOfLifeIntegrationTest extends ProcessFixture {
                                      " OO  " + lineSep + //
                                      "     " + lineSep;
 
-        assertEquals(expectedStep1, executeGameOfLifeAndCollectResults(1, initialBoard));
-        assertEquals(expectedStep2, executeGameOfLifeAndCollectResults(2, initialBoard));
-        assertEquals(expectedStep3, executeGameOfLifeAndCollectResults(3, initialBoard));
-        assertEquals(expectedStep4, executeGameOfLifeAndCollectResults(4, initialBoard));
-        assertEquals(expectedStep5, executeGameOfLifeAndCollectResults(5, initialBoard));
+        assertEquals(expectedStep1, executeGameOfLifeAndCollectResults(1, initialBoard, "O"));
+        assertEquals(expectedStep2, executeGameOfLifeAndCollectResults(2, initialBoard, "O"));
+        assertEquals(expectedStep3, executeGameOfLifeAndCollectResults(3, initialBoard, "O"));
+        assertEquals(expectedStep4, executeGameOfLifeAndCollectResults(4, initialBoard, "O"));
+        assertEquals(expectedStep5, executeGameOfLifeAndCollectResults(5, initialBoard, "O"));
     }
 
     /**
@@ -216,11 +223,11 @@ public class GameOfLifeIntegrationTest extends ProcessFixture {
                                      "  OO " + lineSep + //
                                      "     " + lineSep;
 
-        assertEquals(expectedStep1, executeGameOfLifeAndCollectResults(1, initialBoard));
-        assertEquals(expectedStep2, executeGameOfLifeAndCollectResults(2, initialBoard));
-        assertEquals(expectedStep3, executeGameOfLifeAndCollectResults(3, initialBoard));
-        assertEquals(expectedStep4, executeGameOfLifeAndCollectResults(4, initialBoard));
-        assertEquals(expectedStep5, executeGameOfLifeAndCollectResults(5, initialBoard));
+        assertEquals(expectedStep1, executeGameOfLifeAndCollectResults(1, initialBoard, "O"));
+        assertEquals(expectedStep2, executeGameOfLifeAndCollectResults(2, initialBoard, "O"));
+        assertEquals(expectedStep3, executeGameOfLifeAndCollectResults(3, initialBoard, "O"));
+        assertEquals(expectedStep4, executeGameOfLifeAndCollectResults(4, initialBoard, "O"));
+        assertEquals(expectedStep5, executeGameOfLifeAndCollectResults(5, initialBoard, "O"));
     }
 
 }

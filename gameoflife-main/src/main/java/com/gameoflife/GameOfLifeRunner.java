@@ -16,6 +16,7 @@ public class GameOfLifeRunner {
 
     private static final String BOARD ="-board";
     private static final String STEPCOUNT ="-step";
+    private static final String ACTIVEOUTPUTCHAR ="-active";
 
 
     public static void main(final String params[]) {
@@ -23,12 +24,13 @@ public class GameOfLifeRunner {
            Map<String,String> paramMap=readParams(params);
            BoardFactory factory = new BoardFactory();
             String board=paramMap.get(BOARD);
+            String ch = paramMap.get(ACTIVEOUTPUTCHAR);
             if(board==null){
                 usage();
             }
             Integer stepCount=Integer.parseInt(paramMap.get(STEPCOUNT));
 
-           GameOfLife gameOfLife = new GameOfLife(new Engine(factory.parse(board)),'O');
+           GameOfLife gameOfLife = new GameOfLife(new Engine(factory.parse(board)), ch.charAt(0));
            gameOfLife.step(stepCount);
            gameOfLife.printBoard();
         } catch(NumberFormatException exc)  {
